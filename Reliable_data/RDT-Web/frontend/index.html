@@ -1,0 +1,79 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reliable Data Transfer (Stop-and-Wait RDT Lab)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Reliable Data Transfer Lab (Stop-and-Wait)</h1>
+      <p>Simulate a reliable protocol over an unreliable channel.</p>
+    </header>
+
+    <main>
+      <section class="controls">
+        <h2>Simulation Controls</h2>
+
+        <label>
+          Message to send:
+          <textarea id="message" rows="4" placeholder="Enter message here...">Hello, this is a test message for RDT!</textarea>
+        </label>
+
+        <div class="grid">
+          <label>
+            Packet size (bytes):
+            <input type="number" id="packetSize" value="4" min="1" />
+          </label>
+
+          <label>
+            Packet loss rate (0–1):
+            <input type="number" id="lossRate" value="0.1" min="0" max="1" step="0.01" />
+          </label>
+
+          <label>
+            Corruption rate (0–1):
+            <input type="number" id="corruptionRate" value="0.1" min="0" max="1" step="0.01" />
+          </label>
+
+          <label>
+            ACK loss rate (0–1):
+            <input type="number" id="ackLossRate" value="0.05" min="0" max="1" step="0.01" />
+          </label>
+
+          <label>
+            Max retries per packet:
+            <input type="number" id="maxRetries" value="20" min="1" />
+          </label>
+        </div>
+
+        <button id="runBtn">Run Simulation</button>
+        <span id="status" class="status"></span>
+      </section>
+
+      <section class="output">
+        <div class="stats-panel">
+          <h2>Statistics</h2>
+          <pre id="stats"></pre>
+        </div>
+
+        <div class="result-panel">
+          <h2>Final Reconstructed Data (Receiver)</h2>
+          <pre id="finalData"></pre>
+        </div>
+      </section>
+
+      <section class="events">
+        <h2>Event Timeline</h2>
+        <div id="eventsList" class="events-list">
+          <!-- events will be rendered here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
